@@ -3,8 +3,8 @@ import java.util.List;
 
 // ╔══════════════════════════════════════════════════════════╗
 //  SECTION 1 — แบบฝึกหัด (Exercise)
-//  ชื่อนักศึกษา : ___________________________
-//  รหัสนักศึกษา : ___________________________
+//  ชื่อนักศึกษา : พิสิษฐ์ ทรัพย์อุอมโชติ
+//  รหัสนักศึกษา : 673380285-2
 // ╚══════════════════════════════════════════════════════════╝
 //
 //  โจทย์:
@@ -26,7 +26,8 @@ import java.util.List;
 // 👉 TODO A : enum นี้มีแค่ EXPRESS
 //             เพิ่ม STANDARD ให้ครบด้วย
 enum ShipmentType {
-    EXPRESS
+    EXPRESS 
+    STANDARD
     // เพิ่ม STANDARD ตรงนี้
 }
 
@@ -43,7 +44,7 @@ class Shipment {
     //             ที่ถูกต้องต้องเป็น  (trackingNumber, weightKg, type)
     //             แต่ตอนนี้เป็น      (trackingNumber, type, weightKg)  ← ผิด
     //             แก้ให้ถูกต้อง
-    public Shipment(String trackingNumber, ShipmentType type, double weightKg) {
+    public Shipment(String trackingNumber, weightKg, type ) {
         this.trackingNumber = trackingNumber;
         this.weightKg       = weightKg;
         this.type           = type;
@@ -58,8 +59,8 @@ class Shipment {
     //             EXPRESS_RATE  ต้องเป็น 100.0
     //             แก้ให้ถูกต้อง
     public double calculateCost() {
-        final double STANDARD_RATE = 100.0;   // ← ผิด
-        final double EXPRESS_RATE  =  40.0;   // ← ผิด
+        final double STANDARD_RATE = 40.0;   // ← ผิด
+        final double EXPRESS_RATE  =  100.0;   // ← ผิด
         if (type == ShipmentType.STANDARD) {
             return weightKg * STANDARD_RATE;
         } else {
@@ -72,9 +73,13 @@ class Shipment {
     //             [TH001]  3.00 กก. | STANDARD |    120.00 บาท
     //             แนะนำ: ใช้ String.format() และเรียก calculateCost()
     @Override
+
+    ///////////////////////////////////////
     public String toString() {
-        return "[" + trackingNumber + "] ???";  // ← เติมให้ครบ
+        return String.format("[%s]  %.2f กก. | %s |    %.2f บาท", 
+            trackingNumber, weightKg, type, calculateCost());
     }
+    ////////////////////////////////////////
 }
 
 // ──────────────────────────────────────────────────────────
